@@ -1,1 +1,92 @@
+I created my own personal VPN in order to make my home internet more secure and so I would be able to access my home network from anywhere. For this, I used the WireGuard VPN tunnel.
 
+First, I created a dynamic DNS hostname on the website freedns.afraid.org.
+
+The next step was to install and set up ddclient:
+
+sudo apt install ddclient
+
+Just keep pressing enter until the installation is finished.
+
+Set up which address ddclient needs to update:
+
+sudo nano /etc/ddclient.conf
+
+Delete all of the lines in the file and substitute with the following:
+
+daemon=5m
+timeout=10
+syslog=no # log update msgs to syslog
+#mail=root # mail all msgs to root
+#mail-failure=root # mail failed update msgs to root
+pid=/var/run/ddclient.pid # record PID in file.
+ssl=yes # use ssl-support. Works with
+# ssl-library
+
+use=if, if=eth0
+server=freedns.afraid.org
+protocol=freedns
+login=YOUR FREEDNS LOGIN
+password=YOUR FREEDNS PASSWORD
+your.freedns.domain
+
+Save and close the file!
+
+Restart ddclient to make the new configurations work:
+
+sudo systemctl restart ddclient
+
+Here you can check for the status of the server:
+
+sudo systemctl status ddclient
+
+Make ddclient starts automatically every time the computer (Raspberry Pi) restarts or it is powered on:
+
+sudo systemctl enable ddclient
+
+Make sure to set up port forwarding on your router for the Raspberry pi:
+
+    Device: Raspberry Pi's hostname or IP
+    Protocol: UDP
+    Port range: 51820-51820
+    Outgoing port: 51820
+    Permit Internet access: yes
+
+WireGuard VPN installation
+
+wget https://git.io/wireguard -O wireguard-install.sh && sudo bash wireguard-install.sh
+
+Set up hostname as the same as the dynamic DNS domain created on freedns.afraid.org.
+Set any client name you would like, and for the DNS, use your personal preference - I used 1.1.1.1
+
+It is done!
+
+For every user or device, you need to set up a new client with different keys. To do that, just re-run the script and choose the option add new client. The script is also used
+to manager existent clients.
+
+wget https://git.io/wireguard -O wireguard-install.sh && sudo bash wireguard-install.sh
+
+In order to have the VPN working on other devices or computers, the WireGuard application is necessary. For mobile devices, go to the app store and download WireGuard app. While
+creating new clients, a QR code will be outputted on the terminal window. Simply scan the QR code with the WireGuard app and you should be able to connect with no issues.
+
+To have WireGuard set up on a computer, you also need to download the Wireguard software. Although, the process is a little bit more extensive. You need to copy the ".conf" files
+to the desired computer. 
+
+This method works for Windows and IOS as well!
+
+Move the configuration files to the home directory. Go to the terminal and type:
+
+sudo su
+cp /root/*.conf /home/pi
+
+Now, copy the .conf files named for the desired computer into a usb driver:
+
+sftp *.conf 
+
+Download the WireGuard software and import the desired file and it should work.
+
+This method worked great for me and I am able to access the Internet using my home IP from anywhere. I have access to my router and servers while using public networks. I also created
+a client for a friend in Brazil and he was able to connect and have access to my home internet from there.
+
+
+    
