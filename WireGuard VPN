@@ -90,6 +90,44 @@ Download the WireGuard software and import the desired file and it should work.
 This method worked great for me and I am able to access the Internet using my home IP from anywhere. I have access to my router and servers while using 
 public networks. I also created a client for a friend in Brazil and he was able to connect and have access to my home internet from there.
 
+IF FILES CANNOT BE FOUND
+
+If for some reason you cannot find the files using the methods above, use the comands below to manually find the .conf files and copy the private 
+keys configuration.
+
+    - Knowing where the Wireguard stored the file, normally at /root/NAME OF THE FILE.conf
+      * type on the terminal:
+        
+        sudo su
+        
+      This will take you to the root access
+      
+      * Next, type:
+      
+        cat /root/NAME_OF_THE_FILE.conf
+        
+       The output should be the configuration. It sould look something like this:
+       
+       [Interface]
+Address = 10.7.0.6/24
+DNS = 1.1.1.1, 1.0.0.1
+PrivateKey = SE877pghe9Kdmeizj9xAeUADo8rFttXjn69IIY0KWF=
+
+[Peer]
+PublicKey = U890bxhbpXOJIk1xp/Xra3FS+vRK20XPnZ5aYH3PQk=
+PresharedKey = bNsfRnUMCuywSHPZkNj/C5n/BSplzqMWYvCcQkaKos=
+AllowedIPs = 0.0.0.0/0, ::/0
+Endpoint = RaspberryVPN.crabdance.com:51820
+PersistentKeepalive = 25
+root@ubuntu:/home/ubuntu# cat /root/Nicolas_Dell.conf
+[Interface]
+Address = 10.0.0.4/24
+DNS = 1.1.1.1, 1.0.0.1
+PrivateKey = oEePGPy3ufjvmtMUdGm1RxitUtnEvcz23LEOOLGJ5X=
+
+Go to Wireguard app and choose the option to add the keys manually and past it there.
+
+
 IF THE DDCLIENT DO NOT AUTOMATICALLY CHANGE THE IP ADDRES
 
 If for some reason you are having problems with the internet connection and cannot make the ddclient change the IP address for your freedns domain, 
