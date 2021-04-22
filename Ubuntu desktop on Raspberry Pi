@@ -25,6 +25,6 @@ Change your current directory to desktopify directory
 
 Convert the server to a desktop
 
-    sudo ./desktopify --de ubuntu-mate
+    sudo ./desktopify --de ubuntu
 
 More information can be found on the repository desktopify.
