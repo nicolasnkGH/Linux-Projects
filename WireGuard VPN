@@ -55,8 +55,7 @@ Make sure to set up port forwarding on your router for the Raspberry pi:
 
 WireGuard VPN installation
 
-wget https://git.io/wireguard -O wireguard-install.sh && sudo bash wireguard-install.sh
-
+sudo
 Set up hostname as the same as the dynamic DNS domain created on freedns.afraid.org.
 Set any client name you would like, and for the DNS, use your personal preference - I used 1.1.1.1
 
@@ -83,7 +82,15 @@ cp /root/*.conf /home/pi
 
 Now, copy the .conf files named for the desired computer into a usb driver:
 
-sftp *.conf 
+Open a new directory and then open the Windows Powershell in that directory  ( or other application you would like to use instead)
+
+    - Connect to the Raspberry py from there using sftp instead ssh.
+    
+    sftp ubuntu@YOUR_IP
+    
+    To copy the files to the desire directory, use the command
+    
+sftp get *.conf 
 
 Download the WireGuard software and import the desired file and it should work.
 
