@@ -17,19 +17,14 @@ Delete all of the lines in the file and substitute with the following:
 
 daemon=5m
 timeout=10
-syslog=no # log update msgs to syslog
-#mail=root # mail all msgs to root
-#mail-failure=root # mail failed update msgs to root
-pid=/var/run/ddclient.pid # record PID in file.
-ssl=yes # use ssl-support. Works with
-# ssl-library
-
-use=if, if=eth0
-server=freedns.afraid.org
 protocol=freedns
-login=YOUR FREEDNS LOGIN
-password=YOUR FREEDNS PASSWORD
-your.freedns.domain
+#use=if, if=eth0
+use=web, web=dynamicdns.park-your-domain.com/getip
+ssl=yes
+server=freedns.afraid.org (or whichever service you used)
+login=YOUR_LOGIN_INFORMATION
+password='YOUR_PASSWORD_IN_QUOTATION'
+YOUR_DOMAIN_HERE
 
 Save and close the file!
 
@@ -45,6 +40,15 @@ Make ddclient starts automatically every time the computer (Raspberry Pi) restar
 
 sudo systemctl enable ddclient
 
+In order to have your IP address updated automatically on FreeDNS, follow the steps below:
+    
+    - Go to the tab Dynamic DNS
+    - Mark the option for dynamic updates for your domain
+        * This is step is necessary in order to make your IP address to be updated every time your IP changes.
+    - Choose for of authentication that most suits you. If not sure on which one to use, just choose the recommended option
+      and follow the steps. 
+        * Freedns provides tips and guides on how to proceed with configuration.
+
 Make sure to set up port forwarding on your router for the Raspberry pi:
 
     Device: Raspberry Pi's hostname or IP
@@ -56,7 +60,7 @@ Make sure to set up port forwarding on your router for the Raspberry pi:
 WireGuard VPN installation
 
 sudo
-Set up hostname as the same as the dynamic DNS domain created on freedns.afraid.org.
+Set up host name as the same as the dynamic DNS domain created on freedns.afraid.org.
 Set any client name you would like, and for the DNS, use your personal preference - I used 1.1.1.1
 
 It is done!
@@ -80,7 +84,7 @@ Move the configuration files to the home directory. Go to the terminal and type:
 sudo su
 cp /root/*.conf /home/pi
 
-Now, copy the .conf files named for the desired computer into a usb driver:
+Now, copy the .conf files named for the desired computer into a USB driver:
 
 Open a new directory and then open the Windows Powershell in that directory  ( or other application you would like to use instead)
 
@@ -99,7 +103,7 @@ public networks. I also created a client for a friend in Brazil and he was able 
 
 IF FILES CANNOT BE FOUND
 
-If for some reason you cannot find the files using the methods above, use the comands below to manually find the .conf files and copy the private 
+If for some reason you cannot find the files using the methods above, use the commands below to manually find the .conf files and copy the private 
 keys configuration.
 
     - Knowing where the Wireguard stored the file, normally at /root/NAME OF THE FILE.conf
@@ -113,7 +117,7 @@ keys configuration.
       
         cat /root/NAME_OF_THE_FILE.conf
         
-       The output should be the configuration. It sould look something like this:
+       The output should be the configuration. It should look something like this:
        
        [Interface]
 Address = 10.7.0.6/24
@@ -135,7 +139,7 @@ PrivateKey = oEePGPy3ufjvmtMUdGm1RxitUtnEvcz23LEOOLGJ5X=
 Go to Wireguard app and choose the option to add the keys manually and past it there.
 
 
-IF THE DDCLIENT DO NOT AUTOMATICALLY CHANGE THE IP ADDRES
+IF THE DDCLIENT DO NOT AUTOMATICALLY CHANGE THE IP ADDRESS
 
 If for some reason you are having problems with the internet connection and cannot make the ddclient change the IP address for your freedns domain, 
 try using the configuration below instead.
