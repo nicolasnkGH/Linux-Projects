@@ -8,11 +8,9 @@ Installation command:
 
 Another method is to manually download the installer and then run it.
 
-```
-wget -O basic-install.sh https://install.pi-hole.net
-sudo bash basic-install.sh
+```wget -O basic-install.sh https://install.pi-hole.net```
 
-```
+```sudo bash basic-install.sh```
 
 After the installation process is over, make sure to set up all devices to use Pi-hole. There are two methods for that.
 
