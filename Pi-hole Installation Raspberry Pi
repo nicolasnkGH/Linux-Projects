@@ -4,9 +4,7 @@ The Pi-hole installation process can be found on their website and also in the r
 
 Installation command:
 
-```yml
-curl -sSL https://install.pi-hole.net | bash
-```
+`curl -sSL https://install.pi-hole.net | bash`
 
 Another method is to manually download the installer and then run it.
 
