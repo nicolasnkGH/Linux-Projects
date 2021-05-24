@@ -1,3 +1,4 @@
+# Ubuntu desktop on Raspberry Pi
 I bought a Raspberry PI 4 with the intention of learning Linux and to practice on the terminal. Also, I found that the device
 is capable of handling several several tasks and can be used for testing programming skills.
 
@@ -17,14 +18,14 @@ Proceed with the regular installation and run the commands:
 
 Clone the project
 
-    git clone https://github.com/wimpysworld/desktopify.git
+    ```git clone https://github.com/wimpysworld/desktopify.git```
 
 Change your current directory to desktopify directory
 
-    cd desktopify
+    ```cd desktopify```
 
 Convert the server to a desktop
 
-    sudo ./desktopify --de ubuntu
+    ```sudo ./desktopify --de ubuntu```
 
 More information can be found on the repository desktopify.
