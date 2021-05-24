@@ -40,7 +40,7 @@ Here you can check for the status of the server:
 
 Make ddclient starts automatically every time the computer (Raspberry Pi) restarts or it is powered on:
 
-`sudo systemctl enable ddclient`
+```sudo systemctl enable ddclient```
 
 In order to have your IP address updated automatically on FreeDNS, follow the steps below:
     
@@ -105,18 +105,18 @@ This method worked great for me and I am able to access the Internet using my ho
 
 If for some reason you cannot find the files using the methods above, use the commands below to manually find the .conf files and copy the private keys configuration.
 
-    - Knowing where the Wireguard stored the file, normally at /root/NAME OF THE FILE.conf
+   Knowing where the Wireguard stored the file, normally at /root/NAME OF THE FILE.conf
       * type on the terminal:
         
-        ```sudo su```
+   ```sudo su```
         
-      This will take you to the root access
+   This will take you to the root access
       
-      * Next, type:
+   * Next, type:
       
-        ```cat /root/NAME_OF_THE_FILE.conf```
+   ```cat /root/NAME_OF_THE_FILE.conf```
         
-       The output should be the configuration. It should look something like this:
+   The output should be the configuration. It should look something like this:
 ```       
        [Interface]
 Address = 10.7.0.6/24
@@ -135,6 +135,7 @@ Address = 10.0.0.4/24
 DNS = 1.1.1.1, 1.0.0.1
 PrivateKey = oEePGPy3ufjvmtMUdGm1RxitUtnEvcz23LEOOLGJ5X=
 ```
+Do not try to copy the output below, it was edited - thus, it is not a valid PRIVATEKEY.
 
 Go to Wireguard app and choose the option to add the keys manually and past it there.
 
