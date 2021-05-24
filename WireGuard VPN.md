@@ -89,11 +89,11 @@ Now, copy the ```.conf``` files named for the desired computer into a USB driver
 
 Open a new directory and then open the Windows Powershell in that directory  ( or other application you would like to use instead)
 
-    - Connect to the Raspberry py from there using sftp instead ssh.
+   - Connect to the Raspberry py from there using sftp instead ssh.
     
-    sftp ubuntu@YOUR_IP_HERE
+   ```sftp ubuntu@YOUR_IP_HERE```
     
-    To copy the files to the desire directory, use the command
+   - To copy the files to the desire directory, use the command
     
 ```sftp get *.conf ```
 
