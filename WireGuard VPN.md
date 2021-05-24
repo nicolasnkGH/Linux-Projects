@@ -40,7 +40,7 @@ Here you can check for the status of the server:
 
 Make ddclient starts automatically every time the computer (Raspberry Pi) restarts or it is powered on:
 
-```sudo systemctl enable ddclient```
+`sudo systemctl enable ddclient`
 
 In order to have your IP address updated automatically on FreeDNS, follow the steps below:
     
