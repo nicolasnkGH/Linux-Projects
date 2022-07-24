@@ -83,6 +83,7 @@ This method works for Windows and IOS as well!
 Move the configuration files to the home directory. Go to the terminal and type:
 
 ```sudo su```
+
 ```cp /root/*.conf /home/YOUR_SERVER_NAME```
 
 Now, copy the ```.conf``` files named for the desired computer into a USB driver:
